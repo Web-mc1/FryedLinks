@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minecraft Ultimate Math Toolkit</title>
+  <title>Minecraft Math Toolkit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #1e1e2e;
-      --card-bg: rgba(43, 43, 61, 0.94);
-      --accent-color: #55ff55;
-      --text-color: #ffffff;
-      --border-color: #44445a;
+      --mc-green: #55ff55;
+      --mc-yellow: #ffff55;
+      --mc-red: #ff5555;
+      --panel-bg: rgba(28, 28, 28, 0.92);
+      --slot-bg: #101010;
+      --border-light: #555555;
+      --border-dark: #1e1e1e;
+      --text-main: #ffffff;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #0f0f15;
       background-image: url('c60caaca5eac4e2c935525d1999fbce0.jpeg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      color: var(--text-color);
+      color: var(--text-main);
       margin: 0;
-      padding: 20px;
+      padding: 24px 12px;
       display: flex;
       justify-content: center;
       min-height: 100vh;
@@ -32,50 +36,70 @@
 
     .container {
       width: 100%;
-      max-width: 850px;
-      background: var(--card-bg);
-      backdrop-filter: blur(8px);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 880px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+      border: 4px solid var(--border-light);
+      box-shadow: 
+        inset -4px -4px 0px 0px var(--border-dark),
+        0 12px 32px rgba(0, 0, 0, 0.8);
+      border-radius: 4px;
+      padding: 24px;
       height: fit-content;
     }
 
     h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.3rem;
       text-align: center;
-      color: var(--accent-color);
+      color: var(--mc-green);
       margin-top: 0;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+      text-shadow: 3px 3px 0px #003300;
+      letter-spacing: 1px;
+      line-height: 1.5;
     }
 
+    /* Minecraft Inventory Style Tabs */
     .tabs {
       display: flex;
       gap: 6px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 10px;
+      margin-bottom: 24px;
+      border-bottom: 3px solid var(--border-light);
+      padding-bottom: 12px;
       flex-wrap: wrap;
     }
 
     .tab-btn {
       flex: 1 1 calc(16% - 6px);
-      min-width: 85px;
-      padding: 8px 4px;
-      background: rgba(24, 24, 37, 0.8);
-      border: 1px solid var(--border-color);
-      color: var(--text-color);
+      min-width: 90px;
+      padding: 10px 4px;
+      background: #3c3c3c;
+      border: 2px solid var(--border-light);
+      border-bottom-color: var(--border-dark);
+      border-right-color: var(--border-dark);
+      color: #aaaaaa;
       cursor: pointer;
-      border-radius: 6px;
       font-weight: bold;
-      transition: all 0.2s;
-      font-size: 0.82rem;
+      transition: all 0.1s ease-in-out;
+      font-size: 0.8rem;
       text-align: center;
+      text-transform: uppercase;
+      box-shadow: inset 2px 2px 0px rgba(255,255,255,0.1);
     }
 
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--accent-color);
-      color: #000;
+    .tab-btn:hover {
+      background: #4c4c4c;
+      color: #ffffff;
+    }
+
+    .tab-btn.active {
+      background: #707070;
+      color: var(--mc-yellow);
+      border-color: #ffffff;
+      border-bottom-color: var(--border-dark);
+      border-right-color: var(--border-dark);
+      text-shadow: 1px 1px 0px #000;
     }
 
     .tab-content {
@@ -86,58 +110,85 @@
       display: block;
     }
 
+    h3 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 18px;
+      text-shadow: 2px 2px 0px #000;
+    }
+
+    /* Pixelated Slot Forms */
     .input-group {
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-weight: 600;
+      font-size: 0.9rem;
+      color: #dddddd;
     }
 
     input, select {
       width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-      background: #181825;
-      color: #fff;
+      padding: 12px;
+      border: 3px solid var(--border-dark);
+      border-right-color: var(--border-light);
+      border-bottom-color: var(--border-light);
+      background: var(--slot-bg);
+      color: var(--mc-green);
       box-sizing: border-box;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      font-family: monospace;
+      font-weight: bold;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--mc-green);
     }
 
     .row {
       display: flex;
-      gap: 10px;
+      gap: 12px;
     }
 
     .col {
       flex: 1;
     }
 
+    /* Minecraft UI Tooltip/Output Box */
     .result-box {
-      margin-top: 15px;
-      padding: 15px;
-      background: #181825;
-      border-left: 4px solid var(--accent-color);
+      margin-top: 20px;
+      padding: 16px;
+      background: #100c1c;
+      border: 2px solid #2d1848;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
       border-radius: 4px;
-      line-height: 1.5;
+      line-height: 1.6;
+      color: #e0e0e0;
+    }
+
+    .result-box strong {
+      color: var(--mc-yellow);
     }
 
     canvas {
       display: block;
-      margin: 15px auto 0 auto;
-      background: #111;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
+      margin: 16px auto 0 auto;
+      background: #000;
+      border: 3px solid var(--border-light);
+      box-shadow: inset 0 0 8px #000;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Minecraft Math Toolkit</h1>
+  <h1>MINECRAFT TOOLKIT</h1>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('nether', event)">Nether</button>
@@ -154,12 +205,12 @@
   </div>
 
   <div id="nether" class="tab-content active">
-    <h3>Nether Portal Coordinate Calculator</h3>
+    <h3>Nether Portal Linker</h3>
     <div class="input-group">
-      <label>Direction</label>
+      <label>Travel Direction</label>
       <select id="nether-dir" onchange="calcNether()">
-        <option value="toNether">Overworld -> Nether</option>
-        <option value="toOverworld">Nether -> Overworld</option>
+        <option value="toNether">Overworld ➔ Nether (÷ 8)</option>
+        <option value="toOverworld">Nether ➔ Overworld (× 8)</option>
       </select>
     </div>
     <div class="row">
@@ -176,25 +227,25 @@
   </div>
 
   <div id="stacks" class="tab-content">
-    <h3>Item Stack & Storage Calculator</h3>
+    <h3>Stack & Chest Organizer</h3>
     <div class="input-group">
-      <label>Total Items Required</label>
+      <label>Total Block / Item Count</label>
       <input type="number" id="stack-count" value="1500" min="0" oninput="calcStacks()">
     </div>
     <div class="result-box" id="stack-output">Storage breakdown: ...</div>
   </div>
 
   <div id="circle" class="tab-content">
-    <h3>Circle Grid Generator</h3>
+    <h3>Pixel Circle Blueprint</h3>
     <div class="input-group">
-      <label>Radius (Blocks): <span id="radius-val">8</span></label>
+      <label>Radius: <span id="radius-val" style="color:var(--mc-yellow);">8</span> Blocks</label>
       <input type="range" id="circle-radius" min="1" max="20" value="8" oninput="drawCircle()">
     </div>
     <canvas id="circleCanvas" width="300" height="300"></canvas>
   </div>
 
   <div id="beacon" class="tab-content">
-    <h3>Beacon Pyramid Planner</h3>
+    <h3>Beacon Pyramid Materials</h3>
     <div class="input-group">
       <label>Pyramid Level</label>
       <select id="beacon-level" onchange="calcBeacon()">
@@ -208,14 +259,14 @@
   </div>
 
   <div id="distance" class="tab-content">
-    <h3>3D Distance & Travel Calculator</h3>
-    <p>Point A:</p>
+    <h3>3D Distance & Speed</h3>
+    <p style="margin-top:0; color:#aaa; font-weight:bold;">Point A (Start):</p>
     <div class="row">
       <div class="input-group col"><input type="number" id="dist-x1" value="0" placeholder="X1" oninput="calcDistance()"></div>
       <div class="input-group col"><input type="number" id="dist-y1" value="64" placeholder="Y1" oninput="calcDistance()"></div>
       <div class="input-group col"><input type="number" id="dist-z1" value="0" placeholder="Z1" oninput="calcDistance()"></div>
     </div>
-    <p>Point B:</p>
+    <p style="color:#aaa; font-weight:bold;">Point B (Destination):</p>
     <div class="row">
       <div class="input-group col"><input type="number" id="dist-x2" value="300" placeholder="X2" oninput="calcDistance()"></div>
       <div class="input-group col"><input type="number" id="dist-y2" value="64" placeholder="Y2" oninput="calcDistance()"></div>
@@ -225,16 +276,16 @@
   </div>
 
   <div id="anvil" class="tab-content">
-    <h3>Anvil Prior Work Penalty Calculator</h3>
+    <h3>Anvil Work Penalty</h3>
     <div class="input-group">
-      <label>Times Item Reforged/Combined on Anvil</label>
+      <label>Prior Anvil Modifications</label>
       <input type="number" id="anvil-uses" value="3" min="0" max="10" oninput="calcAnvil()">
     </div>
     <div class="result-box" id="anvil-output">Penalty details: ...</div>
   </div>
 
   <div id="redstone" class="tab-content">
-    <h3>Redstone Pulse Delay Calculator</h3>
+    <h3>Redstone Timing Helper</h3>
     <div class="input-group">
       <label>Target Delay (Seconds)</label>
       <input type="number" id="rs-seconds" value="2.5" step="0.1" min="0.1" oninput="calcRedstone()">
@@ -243,10 +294,10 @@
   </div>
 
   <div id="villager" class="tab-content">
-    <h3>Villager Cure & Discount Tracker</h3>
+    <h3>Zombie Cure Discount</h3>
     <div class="row">
       <div class="input-group col">
-        <label>Base Price (Emeralds/Items)</label>
+        <label>Base Price</label>
         <input type="number" id="vil-base" value="32" min="1" oninput="calcVillager()">
       </div>
       <div class="input-group col">
@@ -258,10 +309,10 @@
   </div>
 
   <div id="farm" class="tab-content">
-    <h3>AFK Farm Yield & Storage Calculator</h3>
+    <h3>AFK Farm Yield Estimator</h3>
     <div class="row">
       <div class="input-group col">
-        <label>Items / Hour Rate</label>
+        <label>Rates (Items / Hour)</label>
         <input type="number" id="farm-rate" value="400" min="1" oninput="calcFarm()">
       </div>
       <div class="input-group col">
@@ -273,24 +324,24 @@
   </div>
 
   <div id="tnt" class="tab-content">
-    <h3>TNT Blast Resistance Calculator</h3>
+    <h3>Blast Resistance Evaluator</h3>
     <div class="input-group">
-      <label>Target Block Material</label>
+      <label>Block Material</label>
       <select id="tnt-block" onchange="calcTNT()">
-        <option value="0.5">Dirt / Sand (Blast Resistance: 0.5)</option>
-        <option value="6.0" selected>Stone / Cobblestone (Blast Resistance: 6.0)</option>
-        <option value="9.0">Deepslate (Blast Resistance: 9.0)</option>
-        <option value="1200">Obsidian / Crying Obsidian (Blast Resistance: 1200)</option>
+        <option value="0.5">Dirt / Sand (Blast Res: 0.5)</option>
+        <option value="6.0" selected>Stone / Cobblestone (Blast Res: 6.0)</option>
+        <option value="9.0">Deepslate (Blast Res: 9.0)</option>
+        <option value="1200">Obsidian / Crying Obsidian (Blast Res: 1200)</option>
       </select>
     </div>
     <div class="result-box" id="tnt-output">Blast resistance results: ...</div>
   </div>
 
   <div id="mobcap" class="tab-content">
-    <h3>Mob Cap & Perimeter Calculator</h3>
+    <h3>Mob Cap & Farm Perimeter</h3>
     <div class="row">
       <div class="input-group col">
-        <label>Active Players in Dimension</label>
+        <label>Active Dimension Players</label>
         <input type="number" id="mob-players" value="1" min="1" oninput="calcMobCap()">
       </div>
       <div class="input-group col">
@@ -314,7 +365,6 @@
     if (tabId === 'circle') drawCircle();
   }
 
-  // 1. Nether
   function calcNether() {
     const dir = document.getElementById('nether-dir').value;
     const x = parseFloat(document.getElementById('nether-x').value) || 0;
@@ -323,11 +373,10 @@
     let targetX = dir === 'toNether' ? Math.floor(x / 8) : x * 8;
     let targetZ = dir === 'toNether' ? Math.floor(z / 8) : z * 8;
 
-    document.getElementById('nether-output').innerText = 
-      `Target Location: X: ${targetX} | Z: ${targetZ}`;
+    document.getElementById('nether-output').innerHTML = 
+      `Target Location: <strong>X: ${targetX}</strong> | <strong>Z: ${targetZ}</strong>`;
   }
 
-  // 2. Stacks
   function calcStacks() {
     const total = parseInt(document.getElementById('stack-count').value) || 0;
     const stacks = Math.floor(total / 64);
@@ -335,12 +384,11 @@
     const doubleChests = (stacks / 54).toFixed(1);
 
     document.getElementById('stack-output').innerHTML = 
-      `<strong>${total} Items</strong> =<br>` +
-      `• ${stacks} Stacks + ${remainder} Leftover Items<br>` +
-      `• ~${doubleChests} Double Chests needed`;
+      `<strong>${total.toLocaleString()} Items</strong> =<br>` +
+      `• <strong>${stacks}</strong> Stacks + <strong>${remainder}</strong> Leftover Items<br>` +
+      `• ~<strong>${doubleChests}</strong> Double Chests required`;
   }
 
-  // 3. Circles
   function drawCircle() {
     const radius = parseInt(document.getElementById('circle-radius').value);
     document.getElementById('radius-val').innerText = radius;
@@ -363,13 +411,12 @@
           ctx.fillRect(px, pz, cellSize, cellSize);
         }
 
-        ctx.strokeStyle = '#2b2b3d';
+        ctx.strokeStyle = '#222222';
         ctx.strokeRect(px, pz, cellSize, cellSize);
       }
     }
   }
 
-  // 4. Beacon
   function calcBeacon() {
     const level = parseInt(document.getElementById('beacon-level').value);
     const levelBlocks = [0, 9, 34, 83, 164];
@@ -385,7 +432,6 @@
       `• Total Raw Ingots Needed: <strong>${ingots.toLocaleString()}</strong>`;
   }
 
-  // 5. Distance
   function calcDistance() {
     const x1 = parseFloat(document.getElementById('dist-x1').value) || 0;
     const y1 = parseFloat(document.getElementById('dist-y1').value) || 0;
@@ -402,29 +448,27 @@
     const elytraSec = (dist / 30).toFixed(1);
 
     document.getElementById('dist-output').innerHTML = 
-      `<strong>Total Distance:</strong> ${dist.toFixed(1)} blocks<br><br>` +
+      `Straight-Line Distance: <strong>${dist.toFixed(1)} Blocks</strong><br><br>` +
       `<strong>Estimated Travel Times:</strong><br>` +
-      `• Walking: ~${walkSec}s<br>` +
-      `• Sprinting: ~${sprintSec}s<br>` +
-      `• Elytra: ~${elytraSec}s`;
+      `• Walking: ~<strong>${walkSec}s</strong><br>` +
+      `• Sprinting: ~<strong>${sprintSec}s</strong><br>` +
+      `• Elytra Rocketing: ~<strong>${elytraSec}s</strong>`;
   }
 
-  // 6. Anvil
   function calcAnvil() {
     const uses = parseInt(document.getElementById('anvil-uses').value) || 0;
     const penalty = Math.pow(2, uses) - 1;
     
     let warning = "";
     if (penalty >= 39) {
-      warning = `<br><span style="color:#ff5555; font-weight:bold;">⚠️ Warning: Next repair exceeds "Too Expensive!" limit (39+ levels)!</span>`;
+      warning = `<br><span style="color:var(--mc-red); font-weight:bold;">⚠️ Warning: Exceeds "Too Expensive!" threshold (39+ Levels)!</span>`;
     }
 
     document.getElementById('anvil-output').innerHTML = 
-      `<strong>Prior Work Count:</strong> ${uses}<br>` +
-      `• Added Level Cost Penalty: <strong>+${penalty} Levels</strong>` + warning;
+      `Prior Work Count: <strong>${uses}</strong><br>` +
+      `• Added Anvil Level Penalty: <strong>+${penalty} Levels</strong>` + warning;
   }
 
-  // 7. Redstone
   function calcRedstone() {
     const sec = parseFloat(document.getElementById('rs-seconds').value) || 0;
     const rsTicks = Math.round(sec * 10);
@@ -439,12 +483,11 @@
     }
 
     document.getElementById('rs-output').innerHTML = 
-      `<strong>${sec}s Delay Requires:</strong><br>` +
+      `Target Delay: <strong>${sec} Seconds</strong><br>` +
       `• Redstone Ticks: <strong>${rsTicks}</strong> (${gameTicks} Game Ticks)<br>` +
-      `• Recommended Repeaters: <strong>${repeaterText}</strong>`;
+      `• Setup: <strong>${repeaterText}</strong>`;
   }
 
-  // 8. Villager
   function calcVillager() {
     const base = parseInt(document.getElementById('vil-base').value) || 1;
     const cures = parseInt(document.getElementById('vil-cures').value) || 0;
@@ -454,13 +497,11 @@
     const itemsForStack = finalPrice * 64;
 
     document.getElementById('vil-output').innerHTML = 
-      `<strong>Villager Discount Summary:</strong><br>` +
-      `• Discount Applied: -${discount} Items<br>` +
-      `• New Unit Price: <strong>${finalPrice}</strong> (Min: 1)<br>` +
-      `• Items Needed for 64 Emeralds: <strong>${itemsForStack}</strong>`;
+      `Discount Applied: <strong>-${discount} Items</strong><br>` +
+      `• New Trade Unit Price: <strong>${finalPrice}</strong> (Min: 1)<br>` +
+      `• Total Items for 64 Emeralds: <strong>${itemsForStack.toLocaleString()}</strong>`;
   }
 
-  // 9. Farm
   function calcFarm() {
     const rate = parseInt(document.getElementById('farm-rate').value) || 0;
     const hours = parseFloat(document.getElementById('farm-hours').value) || 0;
@@ -470,31 +511,29 @@
     const doubleChests = (total / 3456).toFixed(1);
 
     document.getElementById('farm-output').innerHTML = 
-      `<strong>AFK Yield (${hours} Hours):</strong><br>` +
-      `• Total Items Produced: <strong>${total.toLocaleString()}</strong><br>` +
-      `• Stacks: <strong>${stacks}</strong><br>` +
+      `AFK Duration: <strong>${hours} Hours</strong><br>` +
+      `• Items Produced: <strong>${total.toLocaleString()}</strong><br>` +
+      `• Total Stacks: <strong>${stacks}</strong><br>` +
       `• Double Chests Required: <strong>~${doubleChests}</strong>`;
   }
 
-  // 10. TNT Blast
   function calcTNT() {
     const res = parseFloat(document.getElementById('tnt-block').value);
     
     let outcome = "";
     if (res >= 1200) {
-      outcome = "<span style='color:#55ff55;'>Completely Blast Proof! (Absorbs TNT safely)</span>";
+      outcome = "<span style='color:var(--mc-green);'>Completely Blast-Proof! (Safely absorbs TNT)</span>";
     } else if (res >= 6.0) {
-      outcome = "<span style='color:#ffff55;'>Resists single explosions at range, but breaks on direct hit.</span>";
+      outcome = "<span style='color:var(--mc-yellow);'>Resists distance blasts, breaks on direct hits.</span>";
     } else {
-      outcome = "<span style='color:#ff5555;'>Will easily blow up from any adjacent TNT detonation.</span>";
+      outcome = "<span style='color:var(--mc-red);'>Fails against any adjacent explosion.</span>";
     }
 
     document.getElementById('tnt-output').innerHTML = 
-      `<strong>Blast Resistance Rating: ${res}</strong><br>` +
+      `Blast Resistance: <strong>${res}</strong><br>` +
       `• Protection Level: ${outcome}`;
   }
 
-  // 11. Mob Cap
   function calcMobCap() {
     const players = parseInt(document.getElementById('mob-players').value) || 1;
     const simDist = parseInt(document.getElementById('mob-sim').value) || 10;
@@ -503,12 +542,11 @@
     const radius = Math.min(128, simDist * 16);
 
     document.getElementById('mob-output').innerHTML = 
-      `<strong>Dimension Mob Cap:</strong> <strong>${mobCap} Hostile Mobs</strong><br>` +
-      `• Active Despawn Radius: <strong>${radius} blocks</strong> around player<br>` +
-      `• Recommended Farm Perimeter: <strong>${radius} block radius</strong> cleared/lit up.`;
+      `Dimension Hostile Mob Cap: <strong>${mobCap} Mobs</strong><br>` +
+      `• Active Despawn Radius: <strong>${radius} Blocks</strong> around player<br>` +
+      `• Perimeter Requirement: Spawn-proof a <strong>${radius}-block radius</strong> around the farm.`;
   }
 
-  // Run all initial calculations on load
   calcNether();
   calcStacks();
   calcBeacon();
