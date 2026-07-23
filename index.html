@@ -57,10 +57,58 @@
       text-align: center;
       color: var(--mc-green);
       margin-top: 0;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       text-shadow: 3px 3px 0px #003300;
       letter-spacing: 1px;
       line-height: 1.6;
+    }
+
+    /* Community Links Header Banner */
+    .community-banner {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #111;
+      border: 2px solid var(--border-dark);
+    }
+
+    .community-link {
+      padding: 8px 12px;
+      background: #2a2a2a;
+      border: 2px solid var(--border-light);
+      border-bottom-color: var(--border-dark);
+      border-right-color: var(--border-dark);
+      color: var(--mc-yellow);
+      text-decoration: none;
+      font-size: 0.55rem;
+      line-height: 1.4;
+      transition: all 0.1s ease;
+    }
+
+    .community-link:hover {
+      background: var(--mc-yellow);
+      color: #000;
+    }
+
+    .community-link.discord {
+      color: #5865F2;
+      border-color: #5865F2;
+    }
+    .community-link.discord:hover {
+      background: #5865F2;
+      color: #fff;
+    }
+
+    .community-link.youtube {
+      color: var(--mc-red);
+      border-color: var(--mc-red);
+    }
+    .community-link.youtube:hover {
+      background: var(--mc-red);
+      color: #fff;
     }
 
     /* Minecraft Inventory Style Tabs */
@@ -207,6 +255,18 @@
 
 <div class="container">
   <h1>MINECRAFT TOOLKIT</h1>
+
+  <div class="community-banner">
+    <a href="https://web-mc1.github.io/CheeseWhiz/" target="_blank" class="wiki-link" style="margin-top:0; border-color:var(--mc-yellow); color:var(--mc-yellow);">
+      🧀 Minecraft Server Site
+    </a>
+    <a href="https://youtube.com/@fryed_cheese?si=cKrv-ntVzaOhtesI" target="_blank" class="community-link youtube">
+      ▶️ YouTube Channel
+    </a>
+    <a href="https://discord.gg/" target="_blank" class="community-link discord">
+      💬 Join Discord
+    </a>
+  </div>
 
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('nether', event)">Nether</button>
